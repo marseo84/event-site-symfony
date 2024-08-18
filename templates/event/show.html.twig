@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Event
+{% endblock %}
+
+{% block body %}
+  <h1 class="txt-turq text-center">{{ event.name }}</h1>
+
+  <div class="">
+    <div class="card mb-3 event-card-lg bg-pink p-1">
+      <img class="card-img-top h-25 object-fit-cover" src="{{ event.image }}" alt="Card image cap" />
+      <div class="card-body">
+        <div class="row border-bottom border-dark mb-3">
+          <div class="col col-8 d-flex align-items-start">
+            <ul class="list-unstyled">
+              <li class="card-text">
+                <span class="bld">Type:</span> {{ event.type }}
+              </li>
+              <li class="card-text">
+                <span class="bld">Date:</span> {{ event.dateStart ? event.dateStart|date('Y-m-d') : '' }}
+              </li>
+              <li class="card-text">
+                <span class="bld">Start:</span> {{ event.timeStart ? event.timeStart|date('H:i:s') : '' }}
+              </li>
+            </ul>
+          </div>
+          <div class="col col-4 d-flex justify-content-start align-items-start">
+            <ul class="list-unstyled">
+              <li class="card-text">
+                <span class="bld">Venue:</span> {{ event.venue }}
+              </li>
+              <li class="card-text">
+                <span class="bld">Capacity:</span> {{ event.capacity }}
+              </li>
+              <li class="card-text">
+                <span class="bld">Address:</span> {{ event.streetName }} {{ event.streetNumber }}, {{ event.zipCode }}, {{ event.city }}, {{ event.country }}
+              </li>
+              <li class="card-text">
+                <span class="bld">Phone:</span> {{ event.phone }}
+              </li>
+              <li class="card-text">
+                <span class="bld">Email:</span> {{ event.email }}
+              </li>
+              <li class="card-text"></li>
+              <li class="card-text">{{ event.city }}</li>
+            </ul>
+          </div>
+        </div>
+        <h6 class="card-title">Description</h6>
+        <p class="card-text">{{ event.description }}</p>
+      </div>
+    </div>
+  </div>
+
+  <a href="{{ path('app_event_index') }}" class="btn btn-outline-info w-25 my-3">Back to list</a><br />
+
+  <a href="{{ path('app_event_edit', { id: event.id }) }}" class="btn btn-outline-warning w-25 my-3">Edit</a>
+
+  {{ include('event/_delete_form.html.twig') }}
+{% endblock %}

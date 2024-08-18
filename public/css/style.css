@@ -1,0 +1,41 @@
+.event-card {
+  height: 16rem;
+}
+
+.event-card-lg {
+  height: 70vh;
+}
+
+.hero-pic {
+  height: 16rem;
+}
+
+body {
+  background-color: black;
+  color: whitesmoke;
+}
+
+.bg-pink {
+  background-color: #ea1a7a;
+}
+
+.bg-turq {
+  background-color: #00ffff;
+  color: black;
+}
+
+.bg-black {
+  background-color: black;
+}
+
+.txt-pink {
+  color: #ea1a7a;
+}
+
+.txt-turq {
+  color: #00ffff;
+}
+
+.bld {
+  font-weight: 600;
+}

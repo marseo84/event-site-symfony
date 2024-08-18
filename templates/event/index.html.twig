@@ -1,0 +1,136 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Event index
+{% endblock %}
+
+{% block body %}
+  <section class="mb-4">
+    <div class="row">
+      <div class="col col-4">
+        <div class="w-100">
+          <img class="mb-3 hero-pic" src="https://cdn.pixabay.com/photo/2018/05/10/11/34/concert-3387324_640.jpg" alt="" />
+        </div>
+      </div>
+      <div class="col col-5">
+        <h1 class="txt-pink">BIG EVENTS</h1>
+        <h5 class="txt-turq">Feel like having fan?</h5>
+        <h3 class="txt-turq">Find whatever you fancy!</h3>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-4">
+    <h2 class="bg-pink p-2 rounded my-2">Music Events</h2>
+    <div class="row row-cols-md-3">
+      {% for event in events %}
+        {% if event.type == 'music' %}
+          <div class="">
+            <div class="card mb-3 event-card bg-pink p-1">
+              <img class="card-img-top h-50 object-fit-cover" src="{{ event.image }}" alt="Card image cap" />
+              <div class="card-body">
+                <h5 class="card-title text-center">{{ event.name }}</h5>
+                <div class="row">
+                  <div class="col col-8 d-flex align-items-end">
+                    <ul class="list-unstyled">
+                      <li class="card-text">
+                        <span class="bld">Date:</span> {{ event.dateStart ? event.dateStart|date('Y-m-d') : '' }}
+                      </li>
+                      <li class="card-text">
+                        <span class="bld">Venue:</span> {{ event.venue }}
+                      </li>
+                      <li class="card-text">
+                        <span class="bld">City:</span> {{ event.city }}
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col col-4 d-flex justify-content-end align-items-center">
+                    <a href="{{ path('app_event_show', { id: event.id }) }}" class="btn btn-outline-dark">Info</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% else %}
+        <p>There are no events in this category.</p>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="mb-4">
+    <h2 class="bg-turq p-2 rounded my-2">Comedy Events</h2>
+    <div class="row row-cols-md-3">
+      {% for event in events %}
+        {% if event.type == 'comedy' %}
+          <div class="">
+            <div class="card mb-3 event-card bg-turq p-1">
+              <img class="card-img-top h-50 object-fit-cover" src="{{ event.image }}" alt="Card image cap" />
+              <div class="card-body">
+                <h5 class="card-title text-center">{{ event.name }}</h5>
+                <div class="row">
+                  <div class="col col-8 align-items-end">
+                    <ul class="list-unstyled">
+                      <li class="card-text">
+                        <span class="bld">Date:</span> {{ event.dateStart ? event.dateStart|date('Y-m-d') : '' }}
+                      </li>
+                      <li class="card-text">
+                        <span class="bld">Venue:</span> {{ event.venue }}
+                      </li>
+                      <li class="card-text">
+                        <span class="bld">City:</span> {{ event.city }}
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col col-4 d-flex justify-content-end align-items-center">
+                    <a href="{{ path('app_event_show', { id: event.id }) }}" class="btn btn-outline-dark">Info</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% else %}
+        <p>There are no events in this category.</p>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="mb-4">
+    <h2 class="bg-pink p-2 rounded my-2">Movies Events</h2>
+    <div class="row row-cols-md-3">
+      {% for event in events %}
+        {% if event.type == 'movies' %}
+          <div class="">
+            <div class="card mb-3 event-card bg-pink p-1">
+              <img class="card-img-top h-50 object-fit-cover" src="{{ event.image }}" alt="Card image cap" />
+              <div class="card-body">
+                <h5 class="card-title text-center">{{ event.name }}</h5>
+                <div class="row">
+                  <div class="col col-8 d-flex align-items-end">
+                    <ul class="list-unstyled">
+                      <li class="card-text">
+                        <span class="bld">Date:</span> {{ event.dateStart ? event.dateStart|date('Y-m-d') : '' }}
+                      </li>
+                      <li class="card-text">
+                        <span class="bld">Venue:</span> {{ event.venue }}
+                      </li>
+                      <li class="card-text">
+                        <span class="bld">City:</span> {{ event.city }}
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col col-4 d-flex justify-content-end align-items-center">
+                    <a href="{{ path('app_event_show', { id: event.id }) }}" class="btn btn-outline-dark">Info</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% else %}
+        <p>There are no events in this category.</p>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}
